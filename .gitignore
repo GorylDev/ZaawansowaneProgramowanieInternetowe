@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/wwwroot/
+**/TestResults/
+.vs/
+.idea/
+.artifacts/
+*.user
+*.mdf
+*.ldf
+appsettings.Local.json

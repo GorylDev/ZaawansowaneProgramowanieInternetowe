@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <DefaultItemExcludes>$(DefaultItemExcludes);ClientApp/node_modules/**</DefaultItemExcludes>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../WebStore.Model/WebStore.Model.csproj" />
+    <ProjectReference Include="../WebStore.DAL/WebStore.DAL.csproj" />
+    <ProjectReference Include="../WebStore.ViewModels/WebStore.ViewModels.csproj" />
+    <ProjectReference Include="../WebStore.Services/WebStore.Services.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="all" />
+    <Content Remove="ClientApp/**" />
+  </ItemGroup>
+  <Target Name="BuildClient" BeforeTargets="BeforeBuild"
+          Inputs="ClientApp/package-lock.json;ClientApp/index.html;ClientApp/vite.config.js;ClientApp/src/main.jsx;ClientApp/src/style.css"
+          Outputs="wwwroot/index.html" Condition="'$(SkipClientBuild)' != 'true'">
+    <Exec WorkingDirectory="ClientApp" Command="npm ci --no-audit --no-fund" Condition="!Exists('ClientApp/node_modules')" />
+    <Exec WorkingDirectory="ClientApp" Command="npm run build" />
+  </Target>
+  <Target Name="IncludeClientForPublish" AfterTargets="ComputeFilesToPublish" DependsOnTargets="BuildClient">
+    <ItemGroup>
+      <ClientDist Include="wwwroot/**/*" />
+      <ResolvedFileToPublish Include="@(ClientDist->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(ClientDist.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>

@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../WebStore.Model/WebStore.Model.csproj" />
+    <ProjectReference Include="../WebStore.DAL/WebStore.DAL.csproj" />
+    <ProjectReference Include="../WebStore.ViewModels/WebStore.ViewModels.csproj" />
+    <PackageReference Include="AutoMapper" />
+  </ItemGroup>
+</Project>

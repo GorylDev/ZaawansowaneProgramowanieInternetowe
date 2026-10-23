@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../WebStore.Model/WebStore.Model.csproj" />
+  </ItemGroup>
+</Project>

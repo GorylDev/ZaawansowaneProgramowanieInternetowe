@@ -1,0 +1,11 @@
+:root { font-family: system-ui, sans-serif; color: #18302c; background: #f1f5f3; line-height: 1.6; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 860px; margin: 10vh auto; padding: 36px; }
+.label { font-size: .8rem; letter-spacing: .15em; color: #387967; font-weight: 700; }
+h1 { font-size: clamp(3rem, 10vw, 5rem); letter-spacing: -.06em; line-height: 1.1; margin: 22px 0; }
+.intro { font-size: 1.25rem; max-width: 530px; }
+section { background: white; border: 1px solid #d6e1db; border-radius: 16px; padding: 24px 30px; margin-top: 40px; }
+h2 { margin-top: 0; font-size: 1.1rem; }
+footer { color: #5d7169; font-size: .85rem; margin-top: 32px; }
+@media (max-width: 520px) { main { margin: 5vh auto; padding: 24px; } section { padding: 22px; } }
